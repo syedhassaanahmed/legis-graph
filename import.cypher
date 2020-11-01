@@ -120,7 +120,7 @@ FROM 'file:///committee-members.csv' AS line
 MATCH (c:Committee {thomasID: line.committeeID})
 MATCH (l:Legislator {bioguideID: line.legislatorID})
 MERGE (l)-[r:SERVES_ON]->(c)
-SET r.rank = toInt(line.rank);
+SET r.rank = toInteger(line.rank);
 
 // Create District nodes
 LOAD CSV WITH HEADERS
